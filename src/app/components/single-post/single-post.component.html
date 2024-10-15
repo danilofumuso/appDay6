@@ -1,0 +1,29 @@
+<div
+  class="card mt-5"
+  *ngIf="post"
+  [ngClass]="post.active ? 'border border-primary' : 'border border-danger'"
+  (click)="formActivation()"
+>
+  <div class="card-body">
+    <h5 class="card-title">{{ post.title }}</h5>
+    <p class="card-text">
+      {{ post.body }}
+    </p>
+    <p
+      *ngFor="let tag of post.tags"
+      appBackgroundColor
+      class="btn mx-1 p-1 d-inline-block"
+    >
+      {{ tag | uppercase }}
+    </p>
+    <a
+      [routerLink]="['/post-details', post.id]"
+      class="btn btn-outline-primary d-block w-50"
+      >Details</a
+    >
+    <!-- questo ng-container l'ho creato perché su ng-content non prende *ngIf -->
+    <ng-container *ngIf="formActive">
+      <ng-content></ng-content>
+    </ng-container>
+  </div>
+</div>
