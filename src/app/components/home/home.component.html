@@ -18,7 +18,16 @@
 
 <div class="container">
   <div class="row">
-    <h3 class="text-center mt-5">Single Post</h3>
+    <h3 class="text-center my-5">Single Post</h3>
+    <div>
+      <p
+        *ngFor="let tag of tags"
+        appBackgroundColor
+        class="btn d-inline mx-1 p-1"
+      >
+        {{ tag | uppercase }}
+      </p>
+    </div>
     <div class="col col-3" *ngFor="let post of posts">
       <app-single-post [post]="post">
         <form class="mt-3">

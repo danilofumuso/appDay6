@@ -12,11 +12,14 @@ export class HomeComponent implements OnInit {
   posts: iPost[] = [];
   indexRandom: number = 0;
   shuffledPosts: iPost[] = [];
+  tags: string[] = [];
+  // postTagged: boolean = false;
 
   constructor(private postSvc: PostService) {}
 
   ngOnInit() {
     this.posts = this.postSvc.posts;
+    this.tags = [...new Set(this.postSvc.posts.flatMap((post) => post.tags))];
 
     this.indexRandom = Math.floor(Math.random() * this.posts.length); // indice random per avere un post casuale!
 
@@ -32,4 +35,8 @@ export class HomeComponent implements OnInit {
     this.shuffledPosts = structuredClone(this.posts); //creo una deep copy dell'array posts e poi faccio lo shuffle sull'array shuffledPosts!
     this.shuffledPosts = shuffle(this.shuffledPosts);
   }
+
+  // showPosts() {
+  //   this.postTagged = true;
+  // }
 }
