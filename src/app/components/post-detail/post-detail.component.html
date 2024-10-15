@@ -6,7 +6,13 @@
         <div class="card-body">
           <h5 class="card-title">{{ post.title }}</h5>
           <p class="card-text">{{ post.body }}</p>
-          <p *ngFor="let tag of post.tags">{{ tag }}</p>
+          <p
+            *ngFor="let tag of post.tags"
+            appBackgroundColor
+            class="btn mx-1 p-1 d-inline-block"
+          >
+            {{ tag | uppercase }}
+          </p>
         </div>
       </div>
     </div>
